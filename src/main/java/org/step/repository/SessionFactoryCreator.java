@@ -1,5 +1,6 @@
 package org.step.repository;
 
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.step.entity.User;
@@ -13,7 +14,7 @@ public class SessionFactoryCreator {
                 .addAnnotatedClass(User.class) // add annotated class
                 .buildSessionFactory();
 
-    public static SessionFactory sessionFactoryBuilder() {
-        return SESSION_FACTORY;
+    public static Session getSession() {
+        return SESSION_FACTORY.openSession();
     }
 }
