@@ -6,12 +6,14 @@ import org.step.entity.User;
 
 public class SessionFactoryCreator {
 
-    public static SessionFactory sessionFactoryBuilder() {
-        String fileNameInResources = "hibernate.cfg.xml"; // name of configuration file in resources
+    private static final String FILE_NAME_IN_RESOURCES = "hibernate.cfg.xml"; // name of configuration file in resources
 
-        return new Configuration() // create configuration
-                .configure(fileNameInResources) // add configuration file name
+    private static final SessionFactory SESSION_FACTORY = new Configuration() // create configuration
+                .configure(FILE_NAME_IN_RESOURCES) // add configuration file name
                 .addAnnotatedClass(User.class) // add annotated class
-                .buildSessionFactory(); // create session factory
+                .buildSessionFactory();
+
+    public static SessionFactory sessionFactoryBuilder() {
+        return SESSION_FACTORY;
     }
 }
