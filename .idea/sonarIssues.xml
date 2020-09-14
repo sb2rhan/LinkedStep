@@ -13,6 +13,46 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/../LectionFourthProject/src/main/java/org/step/lection/fourth/project/annotations/AnnotationRunner.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../LectionFourthProject/src/main/java/org/step/lection/fourth/project/annotations/DeprecatedClassProcessor.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../LectionFourthProject/src/main/java/org/step/lection/fourth/project/annotations/InitAnnotation.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../LectionFourthProject/src/main/java/org/step/lection/fourth/project/annotations/InitProcessor.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../LectionFourthProject/src/main/java/org/step/lection/fourth/project/annotations/MarkDeprecatedClass.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../LectionFourthProject/src/main/java/org/step/lection/fourth/project/annotations/NewClass.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../LectionFourthProject/src/main/java/org/step/lection/fourth/project/annotations/OldClass.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../LectionFourthProject/src/main/java/org/step/lection/fourth/project/annotations/SuperClass.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/.gitignore">
           <value>
             <set />
@@ -64,6 +104,26 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/src/test/java/org/step/repository/TestConnectionRepositoryTEst.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/test/java/org/step/repository/UserRepositoryTest.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../Test/pom.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../Test/src/main/java/org/step/test/Runner.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../Test/src/main/resources/hibernate.cfg.xml">
           <value>
             <set />
           </value>

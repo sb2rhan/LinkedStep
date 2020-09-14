@@ -7,7 +7,7 @@
   <groupId>org.step</groupId>
   <artifactId>LinkedStep</artifactId>
   <version>1.0-SNAPSHOT</version>
-  <packaging>war</packaging>
+  <packaging>jar</packaging>
 
   <name>LinkedStep Maven Webapp</name>
   <!-- FIXME change it to the project's website -->

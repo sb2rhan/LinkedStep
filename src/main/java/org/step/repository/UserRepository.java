@@ -3,6 +3,8 @@ package org.step.repository;
 import org.hibernate.Session;
 import org.step.entity.User;
 
+import java.util.List;
+
 public class UserRepository {
 
     public void updateUsername(String username, Long id) {
@@ -29,5 +31,17 @@ public class UserRepository {
         session.getTransaction().commit();
 
         session.close();
+    }
+
+    public List<User> findAll() {
+        Session session = SessionFactoryCreator.getSession();
+
+        List<User> users = session.createQuery("select u from User u", User.class)
+                .setReadOnly(true)
+                .getResultList();
+
+        session.close();
+
+        return users;
     }
 }

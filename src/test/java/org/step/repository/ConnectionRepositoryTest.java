@@ -1,5 +1,6 @@
 package org.step.repository;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.Map;
@@ -7,11 +8,12 @@ import java.util.Map;
 public class ConnectionRepositoryTest {
 
     @Test
-    public void test() {
+    public void sessionFactoryCreatedTest() {
         ConnectionRepository connectionRepository = new ConnectionRepository();
 
         Map<String, Object> informationFromDatabase = connectionRepository.getInformationFromDatabase();
 
-        System.out.println(informationFromDatabase);
+        Assert.assertNotNull(informationFromDatabase);
+        Assert.assertFalse(informationFromDatabase.isEmpty());
     }
 }
