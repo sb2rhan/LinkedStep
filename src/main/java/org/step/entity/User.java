@@ -34,7 +34,7 @@ public class User {
     @Column(name = "age", precision = 2, scale = 0)
     private Integer age;
 
-    @OneToOne(mappedBy = "user", fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "user")
     private Profile profile;
 
     // Wont be declared in DB
