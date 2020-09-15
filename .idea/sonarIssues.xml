@@ -58,7 +58,17 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/README.md">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/pom.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/org/step/entity/Profile.java">
           <value>
             <set />
           </value>
@@ -99,6 +109,16 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/src/test/java/org/step/repository/ConnectionRepositoryTest.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/test/java/org/step/repository/NewTest.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/test/java/org/step/repository/ProfileRepositoryTest.java">
           <value>
             <set />
           </value>

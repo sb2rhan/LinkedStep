@@ -1,9 +1,9 @@
 package org.step.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
+import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
@@ -11,19 +11,76 @@ import java.util.Objects;
 @Table(name = "users")
 public class User {
 
+    // GenerationType.TABLE - hibernate is responsible for generation ids by hibernate_sequence
+    // GenerationType.IDENTITY - table must have auto increment property on id column
+    // GenerationType.SEQUENCE - (@SequenceGenerator) - hibernate creates sequence as we declared
+    // or it is uses our sequence which we have created
+    // GenerationType.AUTO - allow hibernate decide what strategy to use (not recommended)
+
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_gen")
+//    @SequenceGenerator(allocationSize = 1, sequenceName = "user_seq", name = "user_gen")
+//    @SequenceGenerator(name = "user_gen", allocationSize = 1, sequenceName = "user_seq", initialValue = 50)
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "username")
+    @Column(name = "username", nullable = false, insertable = true, updatable = true, length = 128)
     private String username;
+
+    @Column(name = "password")
+    private String password;
+
+    @Column(name = "age", precision = 2, scale = 0)
+    private Integer age;
+
+    @OneToOne(mappedBy = "user", fetch = FetchType.LAZY)
+    private Profile profile;
+
+    // Wont be declared in DB
+    @Transient
+    private String someCode;
 
     public User() {
     }
 
-    private User(Long id, String username) {
+    private User(Long id, String username, String password, Integer age) {
         this.id = id;
         this.username = username;
+        this.password = password;
+        this.age = age;
+    }
+
+    public Profile getProfile() {
+        return profile;
+    }
+
+    public void setProfile(Profile profile) {
+        this.profile = profile;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getSomeCode() {
+        return someCode;
+    }
+
+    public void setSomeCode(String someCode) {
+        this.someCode = someCode;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
     }
 
     public static UserBuilder builder() {
@@ -49,6 +106,8 @@ public class User {
     public static class UserBuilder {
         private Long id;
         private String username;
+        private String password;
+        private Integer age;
 
         private UserBuilder() {
         }
@@ -63,8 +122,18 @@ public class User {
             return this;
         }
 
+        public UserBuilder password(String password) {
+            this.password = password;
+            return this;
+        }
+
+        public UserBuilder age(Integer age) {
+            this.age = age;
+            return this;
+        }
+
         public User build() {
-            return new User(id, username);
+            return new User(id, username, password, age);
         }
     }
 

@@ -1,10 +1,9 @@
 package org.step.repository;
 
-import org.hibernate.FlushMode;
 import org.hibernate.Session;
+import org.step.entity.Profile;
 import org.step.entity.User;
 
-import javax.persistence.FlushModeType;
 import java.util.List;
 
 public class UserRepository {

@@ -3,6 +3,7 @@ package org.step.repository;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import org.step.entity.Profile;
 import org.step.entity.User;
 
 public class SessionFactoryCreator {
@@ -12,6 +13,7 @@ public class SessionFactoryCreator {
     private static final SessionFactory SESSION_FACTORY = new Configuration() // create configuration
                 .configure(FILE_NAME_IN_RESOURCES) // add configuration file name
                 .addAnnotatedClass(User.class) // add annotated class
+                .addAnnotatedClass(Profile.class)
                 .buildSessionFactory();
 
     public static Session getSession() {
