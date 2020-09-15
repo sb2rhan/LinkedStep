@@ -39,6 +39,7 @@ target/
 .sts4-cache
 
 ### IntelliJ IDEA ###
+### Git working ###
 .idea
 *.iws
 *.iml
