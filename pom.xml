@@ -10,8 +10,7 @@
   <packaging>jar</packaging>
 
   <name>LinkedStep Maven Webapp</name>
-  <!-- FIXME change it to the project's website -->
-  <url>http://www.example.com</url>
+  <url>http://localhost:7171</url>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -19,6 +18,9 @@
     <hibernate.version>5.4.21.Final</hibernate.version>
     <javax.persistence.version>2.2</javax.persistence.version>
     <postgresql.version>42.2.16</postgresql.version>
+    <slf4j.version>1.7.30</slf4j.version>
+    <jakarta.el.version>3.0.3</jakarta.el.version>
+    <hibernate-validator.version>6.1.5.Final</hibernate-validator.version>
   </properties>
 
   <dependencies>
@@ -28,11 +30,38 @@
       <version>${hibernate.version}</version>
     </dependency>
 
+    <!-- HIKARI CP HIBERNATE -->
+<!--    <dependency>-->
+<!--      <groupId>org.hibernate</groupId>-->
+<!--      <artifactId>hibernate-hikaricp</artifactId>-->
+<!--      <version>${hibernate.version}</version>-->
+<!--    </dependency>-->
+
+    <!-- HIBERNATE VALIDATOR -->
+<!--    <dependency>-->
+<!--      <groupId>org.hibernate</groupId>-->
+<!--      <artifactId>hibernate-validator</artifactId>-->
+<!--      <version>${hibernate-validator.version}</version>-->
+<!--    </dependency>-->
+
+<!--    <dependency>-->
+<!--      <groupId>org.glassfish</groupId>-->
+<!--      <artifactId>jakarta.el</artifactId>-->
+<!--      <version>${jakarta.el.version}</version>-->
+<!--    </dependency>-->
+
     <dependency>
       <groupId>javax.persistence</groupId>
       <artifactId>javax.persistence-api</artifactId>
       <version>${javax.persistence.version}</version>
     </dependency>
+
+    <!-- LOGGING HIBERNATE WORKING -->
+<!--    <dependency>-->
+<!--      <groupId>org.slf4j</groupId>-->
+<!--      <artifactId>slf4j-log4j12</artifactId>-->
+<!--      <version>${slf4j.version}</version>-->
+<!--    </dependency>-->
 
     <dependency>
       <groupId>org.postgresql</groupId>
@@ -50,13 +79,12 @@
 
   <build>
     <finalName>LinkedStep</finalName>
-    <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
+    <pluginManagement>
       <plugins>
         <plugin>
           <artifactId>maven-clean-plugin</artifactId>
           <version>3.1.0</version>
         </plugin>
-        <!-- see http://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_war_packaging -->
         <plugin>
           <artifactId>maven-resources-plugin</artifactId>
           <version>3.0.2</version>
@@ -75,6 +103,18 @@
         <plugin>
           <artifactId>maven-war-plugin</artifactId>
           <version>3.2.2</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-jar-plugin</artifactId>
+          <version>3.2.0</version>
+<!--          <configuration>-->
+<!--            <archive>-->
+<!--              <manifest>-->
+<!--                <mainClass>org.step.Runner</mainClass>-->
+<!--              </manifest>-->
+<!--            </archive>-->
+<!--          </configuration>-->
         </plugin>
         <plugin>
           <artifactId>maven-install-plugin</artifactId>

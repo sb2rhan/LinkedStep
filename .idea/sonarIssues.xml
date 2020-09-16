@@ -68,6 +68,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/org/step/Runner.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/src/main/java/org/step/entity/Profile.java">
           <value>
             <set />
@@ -103,6 +108,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/src/main/resources/log4j.properties">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/src/test/java/org/step/repository/ConnectionRepositoryTEst.java">
           <value>
             <set />
@@ -129,6 +139,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/src/test/java/org/step/repository/UserRepositoryTest.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/test/java/org/step/repository/ValidationTest.java">
           <value>
             <set />
           </value>
