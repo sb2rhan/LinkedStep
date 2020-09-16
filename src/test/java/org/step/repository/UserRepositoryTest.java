@@ -8,6 +8,7 @@ import org.junit.Test;
 import org.step.entity.Profile;
 import org.step.entity.User;
 
+import java.sql.PreparedStatement;
 import java.util.List;
 import java.util.stream.Collectors;
 

@@ -15,6 +15,9 @@
         <!-- show pretty queries -->
         <property name="hibernate.format_sql">true</property>
         <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQL10Dialect</property>
+        <!-- tuning JDBC -->
+<!--        <property name="hibernate.jdbc.batch_size">50</property>-->
+<!--        <property name="hibernate.jdbc.fetch_size">50</property>-->
         <!-- HikariCP for hibernate -->
 <!--        <property name="hibernate.hikari.connectionTimeout">50000</property>-->
 <!--        <property name="hibernate.hikari.maximumPoolSize">20</property>-->

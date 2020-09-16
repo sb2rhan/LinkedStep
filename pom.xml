@@ -63,6 +63,13 @@
 <!--      <version>${slf4j.version}</version>-->
 <!--    </dependency>-->
 
+    <!-- HIBERNATE JPA MODEL GENERATOR -->
+<!--    <dependency>-->
+<!--      <groupId>org.hibernate</groupId>-->
+<!--      <artifactId>hibernate-jpamodelgen</artifactId>-->
+<!--      <version>${hibernate.version}</version>-->
+<!--    </dependency>-->
+
     <dependency>
       <groupId>org.postgresql</groupId>
       <artifactId>postgresql</artifactId>
@@ -94,6 +101,13 @@
           <version>3.8.0</version>
           <configuration>
             <release>11</release>
+<!--            <annotationProcessorPaths>-->
+<!--              <path>-->
+<!--                <groupId>org.hibernate</groupId>-->
+<!--                <artifactId>hibernate-jpamodelgen</artifactId>-->
+<!--                <version>${hibernate.version}</version>-->
+<!--              </path>-->
+<!--            </annotationProcessorPaths>-->
           </configuration>
         </plugin>
         <plugin>
