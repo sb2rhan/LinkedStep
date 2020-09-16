@@ -1,48 +1,16 @@
 package org.step.repository;
 
-import org.hibernate.Session;
-import org.step.entity.Profile;
 import org.step.entity.User;
 
 import java.util.List;
 
-public class UserRepository {
+public interface UserRepository {
 
-    public void updateUsername(String username, Long id) {
-        Session session = SessionFactoryCreator.getSession();
+    void updateUsername(String username, Long id);
 
-        session.getTransaction().begin();
+    User saveUser(User user);
 
-        User user = session.find(User.class, id);
+    List<User> findAll();
 
-        user.setUsername(username);
-
-        session.getTransaction().commit();
-
-        session.close();
-    }
-
-    public void saveUser(User user) {
-        Session session = SessionFactoryCreator.getSession();
-
-        session.getTransaction().begin();
-
-        session.persist(user);
-
-        session.getTransaction().commit();
-
-        session.close();
-    }
-
-    public List<User> findAll() {
-        Session session = SessionFactoryCreator.getSession();
-
-        List<User> users = session.createQuery("select u from User u", User.class)
-                .setReadOnly(true)
-                .getResultList();
-
-        session.close();
-
-        return users;
-    }
+    void deleteUser(Long id);
 }

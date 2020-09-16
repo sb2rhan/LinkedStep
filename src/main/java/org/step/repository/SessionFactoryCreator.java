@@ -6,6 +6,8 @@ import org.hibernate.cfg.Configuration;
 import org.step.entity.Profile;
 import org.step.entity.User;
 
+import javax.persistence.EntityManager;
+
 public class SessionFactoryCreator {
 
     private static final String FILE_NAME_IN_RESOURCES = "hibernate.cfg.xml"; // name of configuration file in resources
@@ -16,7 +18,13 @@ public class SessionFactoryCreator {
                 .addAnnotatedClass(Profile.class)
                 .buildSessionFactory();
 
+    private static final EntityManager ENTITY_MANAGER = SESSION_FACTORY.createEntityManager();
+
     public static Session getSession() {
         return SESSION_FACTORY.openSession();
+    }
+
+    public static EntityManager getEntityManager() {
+        return ENTITY_MANAGER;
     }
 }

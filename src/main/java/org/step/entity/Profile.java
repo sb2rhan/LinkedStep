@@ -25,10 +25,9 @@ public class Profile {
     private String workExperience;
 
     // name of property should be matched to mappedBy in User entity
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(
-            name = "user_id",
-            foreignKey = @ForeignKey(name = "profile_user_fk")
+            name = "user_id"
     )
     private User user;
 

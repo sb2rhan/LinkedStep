@@ -19,7 +19,7 @@
 <!--        <property name="hibernate.jdbc.batch_size">50</property>-->
 <!--        <property name="hibernate.jdbc.fetch_size">50</property>-->
         <!-- HikariCP for hibernate -->
-<!--        <property name="hibernate.hikari.connectionTimeout">50000</property>-->
-<!--        <property name="hibernate.hikari.maximumPoolSize">20</property>-->
+        <property name="hibernate.hikari.connectionTimeout">30000</property>
+        <property name="hibernate.hikari.maximumPoolSize">50</property>
     </session-factory>
 </hibernate-configuration>

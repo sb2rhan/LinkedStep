@@ -34,7 +34,25 @@ public class User {
     @Column(name = "age", precision = 2, scale = 0)
     private Integer age;
 
-    @OneToOne(mappedBy = "user")
+    /*
+   CascadeType
+
+    ALL - все вместе
+    PERSIST - сохранение
+    DETACH - убрать из persistence context
+    MERGE - обновление (update)
+    REFRESH - обновление данных из базы данных в persistence context
+    REMOVE - *** используется крайне редко *** - каскадное удаление
+
+    FetchType
+    EAGER - жадный select
+    LAZY - ленивый select (На проектах почти всегда)
+     */
+    @OneToOne(
+            mappedBy = "user",
+            cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH},
+            fetch = FetchType.LAZY
+    )
     private Profile profile;
 
     // Wont be declared in DB
@@ -49,6 +67,11 @@ public class User {
         this.username = username;
         this.password = password;
         this.age = age;
+    }
+
+    public void addProfile(Profile profile) {
+        this.profile = profile;
+        profile.setUser(this);
     }
 
     public Profile getProfile() {

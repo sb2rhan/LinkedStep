@@ -31,11 +31,11 @@
     </dependency>
 
     <!-- HIKARI CP HIBERNATE -->
-<!--    <dependency>-->
-<!--      <groupId>org.hibernate</groupId>-->
-<!--      <artifactId>hibernate-hikaricp</artifactId>-->
-<!--      <version>${hibernate.version}</version>-->
-<!--    </dependency>-->
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-hikaricp</artifactId>
+      <version>${hibernate.version}</version>
+    </dependency>
 
     <!-- HIBERNATE VALIDATOR -->
 <!--    <dependency>-->
@@ -122,13 +122,13 @@
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-jar-plugin</artifactId>
           <version>3.2.0</version>
-<!--          <configuration>-->
-<!--            <archive>-->
-<!--              <manifest>-->
-<!--                <mainClass>org.step.Runner</mainClass>-->
-<!--              </manifest>-->
-<!--            </archive>-->
-<!--          </configuration>-->
+          <configuration>
+            <archive>
+              <manifest>
+                <mainClass>org.step.Runner</mainClass>
+              </manifest>
+            </archive>
+          </configuration>
         </plugin>
         <plugin>
           <artifactId>maven-install-plugin</artifactId>

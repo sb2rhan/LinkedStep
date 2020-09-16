@@ -88,6 +88,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/org/step/repository/ProfileRepository.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/src/main/java/org/step/repository/SessionFactoryCreator.java">
           <value>
             <set />
@@ -99,6 +104,21 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/src/main/java/org/step/repository/UserRepository.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/org/step/repository/UserRepositoryImpl.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/org/step/repository/impl/ProfileRepositoryImpl.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/org/step/repository/impl/UserRepositoryImpl.java">
           <value>
             <set />
           </value>
@@ -134,6 +154,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/src/test/java/org/step/repository/TestConnectionRepositoryTEst.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/test/java/org/step/repository/UserRepositoryImplTest.java">
           <value>
             <set />
           </value>
