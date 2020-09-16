@@ -43,22 +43,4 @@ public class ProfileRepositoryTest {
 
         entityManager.getTransaction().commit();
     }
-
-    @Test
-    public void findAllTest() {
-        List<Profile> profileList = profileRepository.findAll();
-
-        Assert.assertNotNull(profileList);
-        Assert.assertFalse(profileList.isEmpty());
-    }
-
-    @Test
-    public void findByIdTest() {
-        final Long id = profiles.get(0).getId();
-
-        Optional<Profile> profile = profileRepository.findById(id);
-
-        Assert.assertTrue(profile.isPresent());
-        Assert.assertEquals(id, profile.get().getId());
-    }
 }
