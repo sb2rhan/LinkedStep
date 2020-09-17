@@ -1,6 +1,7 @@
-package org.step.repository;
+package org.step.repository.impl;
 
 import org.hibernate.Session;
+import org.step.repository.SessionFactoryCreator;
 
 import java.util.Map;
 

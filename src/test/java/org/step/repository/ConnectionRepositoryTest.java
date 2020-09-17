@@ -2,6 +2,7 @@ package org.step.repository;
 
 import org.junit.Assert;
 import org.junit.Test;
+import org.step.repository.impl.ConnectionRepository;
 
 import java.util.Map;
 
