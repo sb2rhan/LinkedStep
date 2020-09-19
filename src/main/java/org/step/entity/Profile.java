@@ -1,11 +1,23 @@
 package org.step.entity;
 
+import org.hibernate.annotations.FetchMode;
+import org.hibernate.annotations.Fetch;
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
 @Table(name = "profiles")
+@NamedEntityGraph(
+        name = Profile.Profile_View_Graph,
+        attributeNodes = {
+                @NamedAttributeNode(value = "views")
+        }
+)
 public class Profile {
+    public static final String Profile_View_Graph = "Profile[views]";
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,6 +42,15 @@ public class Profile {
             name = "user_id"
     )
     private User user;
+
+    @OneToMany(
+            fetch = FetchType.LAZY,
+            cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH},
+            mappedBy = "profile"
+    )
+    //@Fetch(FetchMode.SUBSELECT)
+    //@Fetch(FetchMode.JOIN)
+    private List<View> views = new ArrayList<>();
 
     public Profile() {
     }
@@ -87,6 +108,11 @@ public class Profile {
         }
     }
 
+    public void addView(View view) {
+        this.views.add(view);
+        view.setProfile(this);
+    }
+
     public User getUser() {
         return user;
     }
@@ -133,6 +159,14 @@ public class Profile {
 
     public void setWorkExperience(String workExperience) {
         this.workExperience = workExperience;
+    }
+
+    public List<View> getViews() {
+        return views;
+    }
+
+    public void setViews(List<View> views) {
+        this.views = views;
     }
 
     @Override

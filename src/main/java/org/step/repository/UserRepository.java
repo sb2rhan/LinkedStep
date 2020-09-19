@@ -4,13 +4,7 @@ import org.step.entity.User;
 
 import java.util.List;
 
-public interface UserRepository {
+public interface UserRepository extends CrudRepository<User> {
 
     void updateUsername(String username, Long id);
-
-    User saveUser(User user);
-
-    List<User> findAll();
-
-    void deleteUser(Long id);
 }

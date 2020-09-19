@@ -91,7 +91,7 @@ public class UserRepositoryImplTest {
                 .username(username)
                 .build();
 
-        User savedUser = userRepositoryImpl.saveUser(user);
+        User savedUser = userRepositoryImpl.save(user);
 
         Session session = SessionFactoryCreator.getSession();
 
@@ -135,7 +135,7 @@ public class UserRepositoryImplTest {
         final int zero = 0;
         final Long id = userIdList.get(zero);
 
-        userRepositoryImpl.deleteUser(id);
+        userRepositoryImpl.delete(id);
 
         Session session = SessionFactoryCreator.getSession();
 

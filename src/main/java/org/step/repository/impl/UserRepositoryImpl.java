@@ -28,7 +28,7 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
-    public User saveUser(User user) {
+    public User save(User user) {
         Session session = SessionFactoryCreator.getSession();
 
         session.getTransaction().begin();
@@ -53,15 +53,7 @@ public class UserRepositoryImpl implements UserRepository {
         List<User> users = new ArrayList<>();
 
         session.doWork(connection -> {
-//            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM USERS WHERE NAME LIKE %?%");
-//
-//            preparedStatement.setString(1, "irs");
-
             Statement statement = connection.createStatement();
-
-//            statement.addBatch("INSERT INTO USERS() values ()");
-//
-//            int[] ints = statement.executeBatch();
 
             ResultSet resultSet = statement.executeQuery("SELECT * FROM USERS");
 
@@ -87,7 +79,7 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
-    public void deleteUser(Long id) {
+    public void delete(Long id) {
         Session session = SessionFactoryCreator.getSession();
 
         session.beginTransaction();

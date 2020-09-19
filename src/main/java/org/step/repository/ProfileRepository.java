@@ -4,13 +4,9 @@ import org.step.entity.Profile;
 
 import java.util.List;
 
-public interface ProfileRepository {
-
-    List<Profile> findAll();
+public interface ProfileRepository extends CrudRepository<Profile> {
 
     Profile findById(Long id);
 
     List<Profile> findByFullName(String fullName);
-
-    void deleteProfile(Long id);
 }
