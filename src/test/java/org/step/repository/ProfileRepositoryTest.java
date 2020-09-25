@@ -1,13 +1,17 @@
 package org.step.repository;
 
+import org.hibernate.Session;
+import org.hibernate.graph.RootGraph;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.step.entity.Group;
 import org.step.entity.Profile;
 import org.step.entity.View;
 import org.step.repository.impl.ProfileRepositoryImpl;
 
+import javax.persistence.EntityGraph;
 import javax.persistence.EntityManager;
 import java.math.BigInteger;
 import java.sql.Date;
@@ -105,5 +109,78 @@ public class ProfileRepositoryTest {
                 .getSingleResult();
 
         Assert.assertEquals(chosenIndex, profileSingleResult.intValue());
+    }
+
+    @Test
+    public void testAddGroupToProfile() {
+        Group group = Group.builder()
+                .id()
+                .groupName("Daily News")
+                .description("You can see some news there")
+                .category("Informational")
+                .build();
+        Profile exampleProfile = profileRepository.findAll().get(0);
+        entityManager.getTransaction().begin();
+
+        entityManager.persist(group);
+
+        entityManager.flush();
+        exampleProfile.addGroup(group);
+
+        entityManager.getTransaction().commit();
+    }
+
+    @Test
+    public void testGetGroupsOfProfile() {
+        /*Создаем ManyToMany всеми тремя способами, проявите творчество, поработайте
+        с графами и попробуйте поработать с Native SQL.*/
+        Profile chosenOne = profiles.get(0);
+
+        Group group = Group.builder()
+                .id()
+                .groupName("Cool guys")
+                .description("Only for cool people")
+                .category("Chatting")
+                .build();
+
+        entityManager.getTransaction().begin();
+
+        entityManager.persist(group);
+        entityManager.flush();
+        chosenOne.addGroup(group);
+        entityManager.flush();
+
+        // ------ getting through RootGraph -----
+        Session session = SessionFactoryCreator.getSession();
+
+        RootGraph<Profile> graph = session.createEntityGraph(Profile.class);
+        graph.addAttributeNodes("groupSet");
+
+        Profile singleProfile = session.createQuery("select p from Profile p where p.id=:id", Profile.class)
+                .setParameter("id", chosenOne.getId())
+                .applyFetchGraph(graph)
+                .getSingleResult();
+
+        session.close();
+
+        System.out.println(singleProfile);
+        // -------------------------------------
+
+
+        // ---- getting from profile_group table ----
+        List<Object> groupsFrom3rdTable = entityManager.createNativeQuery("SELECT group_id FROM profile_group WHERE profile_id=?")
+                .setParameter(1, chosenOne.getId())
+                .getResultList();
+
+        System.out.println(groupsFrom3rdTable.toString());
+
+        List<Group> groups = entityManager.createQuery("select g from Group g where g.id in :id", Group.class)
+                .setParameter("id", groupsFrom3rdTable)
+                .getResultList();
+
+        System.out.println(groups.toString());
+        // -----------------------------------------
+
+        entityManager.getTransaction().commit();
     }
 }

@@ -4,9 +4,7 @@ import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.Fetch;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 @Entity
 @Table(name = "profiles")
@@ -51,6 +49,10 @@ public class Profile {
     //@Fetch(FetchMode.SUBSELECT)
     //@Fetch(FetchMode.JOIN)
     private List<View> views = new ArrayList<>();
+
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "profileSet")
+    private Set<Group> groupSet = new HashSet<>();
+
 
     public Profile() {
     }
@@ -108,9 +110,22 @@ public class Profile {
         }
     }
 
+    public void addGroup(Group group) {
+        this.groupSet.add(group);
+        group.getProfileSet().add(this);
+    }
+
     public void addView(View view) {
         this.views.add(view);
         view.setProfile(this);
+    }
+
+    public Set<Group> getGroupSet() {
+        return groupSet;
+    }
+
+    public void setGroupSet(Set<Group> groupSet) {
+        this.groupSet = groupSet;
     }
 
     public User getUser() {
@@ -186,9 +201,11 @@ public class Profile {
     public String toString() {
         return "Profile{" +
                 "id=" + id +
+                ", fullName='" + fullName + '\'' +
                 ", abilities='" + abilities + '\'' +
                 ", graduation='" + graduation + '\'' +
                 ", workExperience='" + workExperience + '\'' +
+                ", user=" + user +
                 '}';
     }
 }

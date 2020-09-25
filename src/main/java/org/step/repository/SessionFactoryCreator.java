@@ -3,6 +3,7 @@ package org.step.repository;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import org.step.entity.Group;
 import org.step.entity.Profile;
 import org.step.entity.User;
 import org.step.entity.View;
@@ -18,6 +19,7 @@ public class SessionFactoryCreator {
                 .addAnnotatedClass(User.class) // add annotated class
                 .addAnnotatedClass(Profile.class)
                 .addAnnotatedClass(View.class)
+                .addAnnotatedClass(Group.class)
                 .buildSessionFactory();
 
     private static final EntityManager ENTITY_MANAGER = SESSION_FACTORY.createEntityManager();

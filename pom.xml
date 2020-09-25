@@ -38,17 +38,17 @@
     </dependency>
 
     <!-- HIBERNATE VALIDATOR -->
-<!--    <dependency>-->
-<!--      <groupId>org.hibernate</groupId>-->
-<!--      <artifactId>hibernate-validator</artifactId>-->
-<!--      <version>${hibernate-validator.version}</version>-->
-<!--    </dependency>-->
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-validator</artifactId>
+      <version>${hibernate-validator.version}</version>
+    </dependency>
 
-<!--    <dependency>-->
-<!--      <groupId>org.glassfish</groupId>-->
-<!--      <artifactId>jakarta.el</artifactId>-->
-<!--      <version>${jakarta.el.version}</version>-->
-<!--    </dependency>-->
+    <dependency>
+      <groupId>org.glassfish</groupId>
+      <artifactId>jakarta.el</artifactId>
+      <version>${jakarta.el.version}</version>
+    </dependency>
 
     <dependency>
       <groupId>javax.persistence</groupId>
