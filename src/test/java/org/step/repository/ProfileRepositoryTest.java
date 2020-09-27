@@ -11,12 +11,16 @@ import org.step.entity.Profile;
 import org.step.entity.View;
 import org.step.repository.impl.ProfileRepositoryImpl;
 
-import javax.persistence.EntityGraph;
 import javax.persistence.EntityManager;
+import javax.validation.ConstraintViolation;
+import javax.validation.ConstraintViolationException;
+import javax.validation.Validation;
+import javax.validation.Validator;
 import java.math.BigInteger;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public class ProfileRepositoryTest {
 
@@ -166,7 +170,6 @@ public class ProfileRepositoryTest {
         System.out.println(singleProfile);
         // -------------------------------------
 
-
         // ---- getting from profile_group table ----
         List<Object> groupsFrom3rdTable = entityManager.createNativeQuery("SELECT group_id FROM profile_group WHERE profile_id=?")
                 .setParameter(1, chosenOne.getId())
@@ -182,5 +185,66 @@ public class ProfileRepositoryTest {
         // -----------------------------------------
 
         entityManager.getTransaction().commit();
+    }
+
+    @Test
+    // Тест без исключения
+    public void testGroupValidatorPassed() {
+        Profile chosenOne = profiles.get(0);
+
+        Group group = Group.builder()
+                .id()
+                .groupName("CodeHub")
+                .description("Share your projects here")
+                .category("Coding")
+                .build();
+
+        Validator validator = Validation.buildDefaultValidatorFactory().getValidator();
+        Set<ConstraintViolation<Group>> violations = validator.validate(group);
+        if (!violations.isEmpty()) {
+            System.out.println(violations.toString());
+            throw new ConstraintViolationException(violations);
+        }
+
+        entityManager.getTransaction().begin();
+
+        entityManager.persist(group);
+        entityManager.flush();
+
+        chosenOne.addGroup(group);
+        entityManager.flush();
+
+        entityManager.getTransaction().commit();
+    }
+
+    @Test
+    // Тест с исключением
+    public void testGroupValidatorWithException() {
+        Profile chosenOne = profiles.get(0);
+
+        Group group = Group.builder()
+                .id()
+                .groupName("Tiktok")
+                .description("This group is not going to pass")
+                .category("Social media")
+                .build();
+
+        Validator validator = Validation.buildDefaultValidatorFactory().getValidator();
+        Set<ConstraintViolation<Group>> violations = validator.validate(group);
+
+        if (!violations.isEmpty()) {
+            System.out.println(violations.toString());
+            throw new ConstraintViolationException(violations);
+        }
+        entityManager.getTransaction().begin();
+
+        entityManager.persist(group);
+        entityManager.flush();
+
+        chosenOne.addGroup(group);
+        entityManager.flush();
+
+        entityManager.getTransaction().commit();
+
     }
 }

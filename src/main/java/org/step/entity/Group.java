@@ -1,5 +1,7 @@
 package org.step.entity;
 
+import org.step.constraints.TiktokGroupWillNotPass;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Objects;
@@ -13,6 +15,7 @@ public class Group {
     private String id;
 
     @Column(name = "group_name")
+    @TiktokGroupWillNotPass
     private String groupName;
 
     @Column(name = "description")
